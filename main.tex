@@ -10,9 +10,95 @@
 \newcommand{\MM}{\mathbb{M}}
 \newcommand{\OO}{\mathbb{O}}
 \newcommand{\m}[1]{\begin{bmatrix} #1 \end{bmatrix}}
-
+\newcommand{\kt}{\rangle}
+\newcommand{\br}{\langle}
 
 \begin{document} \maketitle
+\section{Constants}
 
+h
+h bar
+bhor magnitron
+
+\section{}
+
+\section{Classical torque on a magnetic (dipole) moment in a magnetic field}
+
+\subsection{$\vec{B}$ is uniform}
+
+Suppose we have a tilted loop of current in a magnetic field, with it's area vector at an angle $\theta$ from the magnetic field. The force on one unit of charge going around this loop is $\vec{F} = q\vec{v} \times \vec{B}$. If we track a positive charge around this loop we note that there is a troque which rights the loop. However, in a uniform magnetic field, there is no net force. 
+
+\subsection{$\vec{B}$ is non uniform}
+
+Suppose that the magnetic field points along the $z$ direction with a nonzero gradient $\frac{dB_z}{dz}>0$. This alone does not cause a force on the loop. However, Maxwelll's equations dictate that the divergence of the magnetic field must be $0$, so if $\frac{dB_z}{dz}>0$ then the magnetic field must have non zero partial derivatives in $x$ and $y$ which exert an overall force in the positive $z$ direction (for positive charge). The potential energy is $E = \vec{m}\cdot \vec{B}$ so the force is $ \vec{\nabla} (\vec{m} \cdot \vec{B})$ which is $m_z\frac{dB_z}{dz}$ along the $z$ axis.
+
+
+\subsection{Magnetic moment and classical angular momentum}
+
+We can model the magnetic moment of an atom as coming from a circling electron. The current is charge/time, $\frac{-e}{\text{orbit time}} = \frac{-ev}{2\pi r}$. The magnetic moment of this loop is $I$ times the area vector, or $\frac{-e}{2}vr = \frac{-e m_e vr}{2m_e} = \frac{-e}{2m_e}L$ so $\vec{m} = \frac{-e}{2m_e}\vec{L}$. 
+
+
+\section{Stern-Gerlatch Experiment}
+
+In the case of the classical dipole, we had a force along the $z$ direction equal to $m_z\frac{dB_z}{dz}$. So in the $z$ varying magnetic field of the stern gerlatch experiment, the force is proportional to the $z$ component of the magnetic dipole moment of the atoms, which we expect to take on an even distribution. However, when atoms are put through the device they end up being measured with discrete values of the $z$ component of their angular momentum. Differetn atoms lead to different outcomes. 
+
+\subsection{Silver}
+
+In the case of silver, the lone outermost elecron does not have orbital angular momentum, but it does have spin, which is some intrinsic angular momentum. Taking the calculation with orbital angular momentum as an analogy, we have $\vec{m} = \frac{-g_s \mu_B \vec{S}}{\hbar}$ where $\mu_B = \frac{e \hbar}{2m_e}$, $\vec{S}$ is the angular momentum and $g_s$ is very close to $2$ and comes from an integral over the charge distribution (since we are dealing with intrinsic spin instead of orbital angular momentum) (in fact this was historically measured as $m_z = \pm \mu_B$). Along the $z$ axis, $S_z = \pm \frac{\hbar}{2}$.
+
+\subsection{Other atoms than silver}
+
+Generally, the projection of angular momentum onto an axis $\vec{J} \cdot \vec{n}$ comes in values separated by $\hbar = \frac{h}{2\pi}$
+
+\section{Braket notation}
+
+Postulate of quantum mechanics: 
+All information about the state can be summarized in a normalized ket $\br \psi | \psi \kt = 1$. 
+The probability of detecting a state (abreviated as $P_x$) such as $| + \kt$ is $| \br + | \psi \kt |^2$ (this is the conventional order)
+
+If $|\psi \kt = a | + \kt + b | - \kt$ then $\br \psi | = a^* \br \psi | + b^* \br \psi |$
+In general, $\br \psi | \phi \kt = \br  \phi | \psi \kt^*$
+
+Basis vectors such as $| \pm_z \kt$ must be orthonormal and complete (meaning they span the hilbert space)
+
+For a general quantum system, we have 
+$\bra a_i | a_j \kt = \delta_{ij}$ (orthogonality)
+$| \psi \kt = \sum_i \bra a_i | \psi \kt |a_i \kt$
+And the probability of measuring this system in a state is 
+$P_{a_n} = |\bra a_n | \psi_{in} \kt|^2$
+
+
+\[| +_x \kt = \frac{1}{\sqrt{2}}[|+_z \kt + |-_z \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ 1}\]
+\[| -_x \kt = \frac{1}{\sqrt{2}}[|+_z \kt - |-_z \kt]= \frac{1}{\sqrt{2}} \m{ 1\\ -1}\]
+
+\[| +_z \kt = \frac{1}{\sqrt{2}}[|+_x \kt + |-_x \kt] =  \m{ 1\\ 0}\]
+\[| -_z \kt = \frac{1}{\sqrt{2}}[|+_x \kt - |-_x \kt] = \m{ 0\\ 1}\]
+
+\[| +_y \kt = \frac{1}{\sqrt{2}}[|+_z \kt + i|-_z \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ i}\]
+\[| -_y \kt = \frac{1}{\sqrt{2}}[|+_x \kt - i|-_x \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ -i}\]
+\[| \psi  \kt = \m{\br +_z|\psi \kt \\ \br -_z|\psi \kt}\]
+
+These are all super position states, sometimes called "coherent" superpositions, because the relative phase is important (such as the sign in $| \pm_x \kt$ determining the measurement along the $x$ basis).
+
+\section{Operators}
+
+Observables are represented by operators, which act on kets to produce other kets. For the eign vectors of an observable, the kets are only multiplied by a constant. The eignvalues corresponding to these eign vectors are the only possible values of a measurement of that observable.
+
+In their own basis, oporators are diagonal since eign values are unit vectors in their own basis.
+\[S_z = \m{\hbar/2 & 0 \\ 0 & -\hbar/2}\]
+
+We can isolate a matrix element of an oporator by sandwitching it between two of it's basis vectors:
+\[A = \m{\br + | A | + \kt & \br + | A | - \kt \\ \br - | A | + \kt & \br - | A | - \kt}\]
+Or generally, $A_{ij} = \br i | A | j \kt$
+This is still called a matrix element even when the ket and bra are not basis vectors.
+
+\subsection{Finding Eignvalues and Eignvectors}
+
+The equation for the eign vectors of an operator $A$ is 
+
+\[\m{A_{11} & A_{12} \\ A_{21} & A_{22}}\m{c_{n1} \\ c_{n2}} = a_n \m{c_{n1} \\ c_{n2}}\]
+which multiplies out to the equations
+\[(A_{11} - a_n)c_{n1} + A_{12}c_{n2} = 0\]
+\[A_{21}c_{n1}+ (A_{22}- a_n)c_{n2} = 0\]
 
 \end{document}
