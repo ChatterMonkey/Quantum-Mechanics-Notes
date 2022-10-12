@@ -12,15 +12,28 @@
 \newcommand{\m}[1]{\begin{bmatrix} #1 \end{bmatrix}}
 \newcommand{\kt}{\rangle}
 \newcommand{\br}{\langle}
-
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\bra}[1]{ \langle #1 |}
 \begin{document} \maketitle
 \section{Constants}
-
+Add page 41 image
+Add the hamiltonian for magnetic field
 h
 h bar
 bhor magnitron
 
-\section{}
+\section{Postulates of Quantum Mechanics}
+\begin{enumerate}
+    \item The state of a quantum mechanical system, including all the information you can know about it, is represented mathematically by a normalized $| \psi \kt$ 
+    \item A physical observable is represented mathematically by an operator $A$ that acts on kets.
+    \item The only possible result of a measurement of an observable is one of the eigenvalues $a_n$ of the corresponding operator $A$.
+    \item The probability of obtaining the eigenvalue a system in the state $| \psi \kt$  is in a measurement of the observable A on the $\mathbb{P}_{a_n} = |\br a_n | \psi_{in} \kt |^2$ where $a_n$ is the normalized eignvector of $A$ corresponding to an eignvalue $a_n$
+    \item After a measurement of $A$ that yields the result $a_n$, the quantum system is in a new state that is the normalized projection of the original system ket onto the ket (or kets) corresponding to the result of the measurement, $| \psi' \kt = \frac{P_n | \psi \kt}{\sqrt{ \br \psi | P_n | \psi \kt}}$
+    \item The time evolution of a quantum system is determined by the Hamiltonian or total energy operator $H(t)$ through the Schrödinger equation $i\hbar \frac{d}{dt}| \psi (t) \kt = H(t)| \psi (t) \kt$
+
+
+\end{enumerate}
+
 
 \section{Classical torque on a magnetic (dipole) moment in a magnetic field}
 
@@ -30,7 +43,7 @@ Suppose we have a tilted loop of current in a magnetic field, with it's area vec
 
 \subsection{$\vec{B}$ is non uniform}
 
-Suppose that the magnetic field points along the $z$ direction with a nonzero gradient $\frac{dB_z}{dz}>0$. This alone does not cause a force on the loop. However, Maxwelll's equations dictate that the divergence of the magnetic field must be $0$, so if $\frac{dB_z}{dz}>0$ then the magnetic field must have non zero partial derivatives in $x$ and $y$ which exert an overall force in the positive $z$ direction (for positive charge). The potential energy is $E = \vec{m}\cdot \vec{B}$ so the force is $ \vec{\nabla} (\vec{m} \cdot \vec{B})$ which is $m_z\frac{dB_z}{dz}$ along the $z$ axis.
+Suppose that the magnetic field points along the $z$ direction with a nonzero gradient $\frac{dB_z}{dz}>0$. This alone does not cause a force on the loop. However, Maxwelll's equations dictate that the divergence of the magnetic field must be $0$, so if $\frac{dB_z}{dz}>0$ then the magnetic field must have non zero partial derivatives in $x$ and $y$ which exert an overall force in the positive $z$ direction (for positive charge). The potential energy is $E = -\vec{m}\cdot \vec{B}$ so the force is $ \vec{\nabla} (\vec{m} \cdot \vec{B})$ which is $m_z\frac{dB_z}{dz}$ along the $z$ axis.
 
 
 \subsection{Magnetic moment and classical angular momentum}
@@ -62,10 +75,12 @@ In general, $\br \psi | \phi \kt = \br  \phi | \psi \kt^*$
 Basis vectors such as $| \pm_z \kt$ must be orthonormal and complete (meaning they span the hilbert space)
 
 For a general quantum system, we have 
-$\bra a_i | a_j \kt = \delta_{ij}$ (orthogonality)
+$\br a_i | a_j \kt = \delta_{ij}$ (orthogonality)
 $| \psi \kt = \sum_i \bra a_i | \psi \kt |a_i \kt$
+Or
+$\sum_n P_{a_n} = \sum_n |a_n \kt \br a_n | = 1$ (sum of projections is the identity)
 And the probability of measuring this system in a state is 
-$P_{a_n} = |\bra a_n | \psi_{in} \kt|^2$
+$P_{a_n} = |\br a_n | \psi_{in} \kt|^2$
 
 
 \[| +_x \kt = \frac{1}{\sqrt{2}}[|+_z \kt + |-_z \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ 1}\]
@@ -75,7 +90,7 @@ $P_{a_n} = |\bra a_n | \psi_{in} \kt|^2$
 \[| -_z \kt = \frac{1}{\sqrt{2}}[|+_x \kt - |-_x \kt] = \m{ 0\\ 1}\]
 
 \[| +_y \kt = \frac{1}{\sqrt{2}}[|+_z \kt + i|-_z \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ i}\]
-\[| -_y \kt = \frac{1}{\sqrt{2}}[|+_x \kt - i|-_x \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ -i}\]
+\[| -_y \kt = \frac{1}{\sqrt{2}}[|+_z  \kt - i|-_z \kt] = \frac{1}{\sqrt{2}} \m{ 1\\ -i}\]
 \[| \psi  \kt = \m{\br +_z|\psi \kt \\ \br -_z|\psi \kt}\]
 
 These are all super position states, sometimes called "coherent" superpositions, because the relative phase is important (such as the sign in $| \pm_x \kt$ determining the measurement along the $x$ basis).
@@ -83,16 +98,41 @@ These are all super position states, sometimes called "coherent" superpositions,
 \section{Operators}
 
 Observables are represented by operators, which act on kets to produce other kets. For the eign vectors of an observable, the kets are only multiplied by a constant. The eignvalues corresponding to these eign vectors are the only possible values of a measurement of that observable.
-
-In their own basis, oporators are diagonal since eign values are unit vectors in their own basis.
+In their own basis, operators are diagonal since eign values are unit vectors in their own basis.
 \[S_z = \m{\hbar/2 & 0 \\ 0 & -\hbar/2}\]
+\[S_x = \m{  0 & \hbar/2 \\ \hbar/2 & 0}\]
+\[S_y = \m{ 0 & -i\hbar/2\\ i\hbar/2 & 0 }\]
+
+
 
 We can isolate a matrix element of an oporator by sandwitching it between two of it's basis vectors:
 \[A = \m{\br + | A | + \kt & \br + | A | - \kt \\ \br - | A | + \kt & \br - | A | - \kt}\]
 Or generally, $A_{ij} = \br i | A | j \kt$
 This is still called a matrix element even when the ket and bra are not basis vectors.
 
+\section{The general direction}
+\[ \hat{n} = \hat{i}\sin(\theta)\cos(\phi)+ \hat{j}\sin(\theta)\sin(\phi) + \hat{k}\cos(\theta)\]
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=4cm]{sphericalangles}
+    \caption{$0 \leq \theta < \pi$, $0 \leq \phi < 2\pi$}
+
+\end{figure}
+
+
+And $S_n = S \cdot \hat{n} = S_x\sin(\theta)\cos(\phi)+ S_y\sin(\theta)\sin(\phi) + S_z\cos(\theta)$
+
+We can also represent this as a matrix:
+\[S_n  = \frac{\hbar}{2}\m{\cos(\theta) & \sin(\theta)e^{-i\phi} \\\sin(\theta)e^{i\phi} & -\cos(\theta)}\]
+with eign vectors
+\[\ket{+_n} = \cos \frac{\theta}{2}\ket{+} + \sin \frac{\theta}{2}e^{i\phi}\ket{-}\]
+\[\ket{-_n} = \sin \frac{\theta}{2}\ket{+} - \cos \frac{\theta}{2}e^{i\phi}\ket{-}\]
+
+
 \subsection{Finding Eignvalues and Eignvectors}
+
+To find the eign values we can use the equation $\det(A - \lambda I) = 0$
 
 The equation for the eign vectors of an operator $A$ is 
 
@@ -101,4 +141,89 @@ which multiplies out to the equations
 \[(A_{11} - a_n)c_{n1} + A_{12}c_{n2} = 0\]
 \[A_{21}c_{n1}+ (A_{22}- a_n)c_{n2} = 0\]
 
+
+\section{Hermition-ness}
+
+If $A \ket{a} = \ket{b}$, then the corresponding bra is $\bra{b} = \bra{a}A^{\dag}$. Where $\dag$ is the conjugated transpose, and we say $H$ is hermitian if $H^{\dag} = H$.
+
+
+\section{Projection Operators}
+
+We can write any state as 
+\[\ket{\psi} = \bra{+}\psi \rangle \ket{+} + \bra{-}\psi \rangle \ket{-} \]
+Because of the completness of this basis. But these inner products are just numbers, so we can shift to get
+\[\ket{\psi} = \ket{+}\bra{+}\psi \rangle  +  \ket{-} \bra{-}\psi \rangle = (\ket{+}\bra{+}  +  \ket{-} \bra{-}) \ket{\psi}\]
+Representing as matrices, we see
+\[P_{+} =\ket{+}\bra{+}  = \m{1 & 0 \\ 0 & 0 }\]
+\[P_{-} =\ket{-}\bra{-}  = \m{0 & 0 \\ 0 & 1 }\]
+
+\section{Expected value}
+
+The expected value of an oporator is 
+\[\langle A \rangle = \langle \psi | A | \psi \rangle = \sum_{n}a_nP_{a_n}\]
+Where $a_n$ are the eign vectors and $P_{a_n} = |\bra{a_n} \psi \rangle|^2$ is the probability of measureing $a_n$. 
+
+We can define the rms (root mean squared) deviation of $A$ as follows
+\[\Delta A = \sqrt{\langle (A - \langle A \rangle)^2 \rangle} = \sqrt{\langle A^2 \rangle  - \langle A \rangle^2}\]
+
+where $\langle A^2 \rangle$ can be calculated as $\langle \psi | A^2 | \psi \rangle$ where $A^2 \psi = A(A(\psi))$
+
+\section{Commutation}
+
+Define the commuter of two oporators to be $[A,B] = AB - BA$, we say $A$ and $B$ commute iff this is $0$.
+
+If $A$ and $B$ commute, then for an eign vector of $A$, we have $A | a \kt = a | a \kt$, $BA | a \kt = aB | a \kt$, $A(B| a \kt) = a(B| a \kt)$, so $B| a \kt$ is an eign vector of $A$, and it must be the same eign vector as $| a \kt$, since they share eignvalues (disregarding degeneracy), so $B| a \kt = b| a \kt$, or $| a \kt$ is also an eign vector of $B$. - So commuting operators share common eignvalues
+
+WHen $A$ and $B$ commute we call them compatable - if we measure $A$ we end up with a projection onto a $| a \kt$. But since this is also an eign state of $B$, measuring $B$ also gives $| a \kt$ so we can measure $A$ again and get back $| a \kt$, measuring $B$ does not destroy information about $A$, so we can know the eign values of both observables simultaneously.
+
+If two matrices are both diagonal in the same basis then they both commute - matrices are diagonal in their own basis - and we can see the order doesn't matter between two diagnonal matrices. However, if one or more is not diagonal that does not mean they do not commute
+
+
+\subsection{Angular Momentum Commutation relations}
+\[[S_x,S_y] = i \hbar S_z\]
+\[[S_y,S_z] = i \hbar S_x\]
+\[[S_z,S_x] = i \hbar S_y\]
+
+
+
+\section{Uncertainty Principle}
+
+The uncertainty principle states that the product of uncertainties or standard deviations of two observables is 
+\[\Delta A \Delta B \ge \frac{1}{2}|\br [A,B] \kt|\]
+
+
+\section{The $S^2$ operator}
+
+We can consider the operator 
+\[S^2 = S_x^2 + S_y^2 + S_z^2 = \frac{3}{4}\hbar^2\m{1 & 0 \\ 0 & 1}\]
+
+This is proportional to the identity operator, so $S^2 \ket{\psi} = \frac{3}{4}\hbar^2\ket{\psi}$ for all $\psi$. Since $\langle S^2 \rangle = \frac{3}{4}\hbar^2$ for the spin 1/2 system, then the "length" of the spin state is $\sqrt{3}\frac{\hbar}{2}$
+
+\section{Spin $1$ systems}
+
+The eign vectors are $\ket{-1}, \ket{0} \ket{1}$ with eign values $-\hbar, 0, \hbar$ respectiely. SO in matrix representation this becomes
+\[S_z = \hbar \m{1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1}\]
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{Sx}
+   
+
+\end{figure}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{Sy}
+   
+
+\end{figure}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{Sxymatrices}
+
+
+\end{figure}
 \end{document}
+
+
+
+
